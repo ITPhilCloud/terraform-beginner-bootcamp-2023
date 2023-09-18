@@ -18,9 +18,7 @@ To create a new feature branch:
 
 ![Screenshot of new GitHub issue](/images/Issues4.png)
 
-
-
-- include the issue number in the branching command, for exmaple:
+- include the issue number in the command to checkout the branch, for exmaple:
 
 git checkout -b 1_semantic_versioning 
 
