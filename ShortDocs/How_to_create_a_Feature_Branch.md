@@ -6,6 +6,14 @@ To create a new feature branch:
 
 ![Screenshot of GitHub issue menu.](/images/Issues1.png)
 
+- Select the New Issue button
+
+![Screenshot of GitHub New Issue Button](/images/Issues2.png)
+
+- Complete the title, enter a comment, and select the Submit new issue button.
+
+![Screenshot of GitHub New Issue Button](/images/Issues3.png)
+
 - include the issue number in the branching command, for exmaple:
 
 git checkout -b 1_semantic_versioning 
