@@ -12,7 +12,13 @@ To create a new feature branch:
 
 - Complete the title, enter a comment, and select the Submit new issue button.
 
-![Screenshot of GitHub New Issue Button](/images/Issues3.png)
+![Screenshot of GitHub New Issue Button](/images/Issues3.png)v
+
+- The issue should now be displayed. Note the issue number.
+
+![Screenshot of GitHub New Issue Button](/images/Issues4.png)
+
+
 
 - include the issue number in the branching command, for exmaple:
 
