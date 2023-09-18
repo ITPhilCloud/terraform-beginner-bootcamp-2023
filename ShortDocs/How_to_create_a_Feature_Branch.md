@@ -16,7 +16,7 @@ To create a new feature branch:
 
 - The issue should now be displayed. Note the issue number.
 
-![Screenshot of GitHub New Issue Button](/images/Issues4.png)
+![Screenshot of new GitHub issue](/images/Issues4.png)
 
 
 
