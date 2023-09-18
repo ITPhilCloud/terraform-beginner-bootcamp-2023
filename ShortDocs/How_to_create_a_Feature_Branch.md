@@ -2,7 +2,7 @@
 
 To create a new feature branch:
 
-- Create an issue with a title and description in github
+- Create an issue in Github
 
 ![Screenshot of GitHub issue menu.](/images/Issues1.png)
 
@@ -23,7 +23,9 @@ To create a new feature branch:
 
 Continue here ---
 
-git checkout -b 1_semantic_versioning 
+```bash
+git checkout -b 1_semantic_versioning
+```
 
 - Push the new branch to Git
 
