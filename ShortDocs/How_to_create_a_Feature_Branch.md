@@ -12,13 +12,16 @@ To create a new feature branch:
 
 - Complete the title, enter a comment, and select the Submit new issue button.
 
-![Screenshot of GitHub New Issue Button](/images/Issues3.png)v
+![Screenshot of GitHub New Issue Button](/images/Issues3.png)
 
 - The issue should now be displayed. Note the issue number.
 
 ![Screenshot of new GitHub issue](/images/Issues4.png)
 
 - include the issue number in the command to checkout the branch, for exmaple:
+
+
+Continue here ---
 
 git checkout -b 1_semantic_versioning 
 
