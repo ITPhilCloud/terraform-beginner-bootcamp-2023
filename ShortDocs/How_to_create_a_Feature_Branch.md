@@ -1,4 +1,4 @@
-## ShortDoc - How to create a Feature Branch
+# ShortDoc - How to create a Feature Branch
 
 To create a new feature branch:
 
