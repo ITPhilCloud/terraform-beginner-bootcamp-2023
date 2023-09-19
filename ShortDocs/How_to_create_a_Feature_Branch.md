@@ -6,7 +6,7 @@ To create a new feature branch:
 
 ![Screenshot of GitHub issue menu.](/images/Issues1.png)
 
-- Select the New Issue button
+- Select the New issue button
 
 ![Screenshot of GitHub New Issue Button](/images/Issues2.png)
 
@@ -20,25 +20,27 @@ To create a new feature branch:
 
 - include the issue number in the command to checkout the branch, for exmaple:
 
-
-Continue here ---
-
 ```bash
 git checkout -b 1_semantic_versioning
 ```
 
 - Push the new branch to Git
 
+```bash
 git push
+```
 
 - if an error message occurs, for example:
 
+```bash
 fatal: The current branch 1_semantic_versioning has no upstream branch. 
 To push the current branch and set the remote as upstream, use
 
 git push --set-upstream origin 1_semantic_versioning
+```
 
-enter the suggested command.
+enter the command as suggested.
 
 - The branch should now be visible expand Main menu in Github.
+
 
