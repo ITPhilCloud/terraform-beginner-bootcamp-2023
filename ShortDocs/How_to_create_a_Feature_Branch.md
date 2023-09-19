@@ -41,6 +41,7 @@ git push --set-upstream origin 1_semantic_versioning
 
 enter the command as suggested.
 
-- The branch should now be visible expand Main menu in Github.
+- The branch should now be visible in the main menu.
 
+![Screenshot of new branch in GitHub](/images/Issues5.png)
 
