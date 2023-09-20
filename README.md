@@ -87,9 +87,61 @@ chmod 744 ./bin/install_terraform_cli
 
 [chmod wikipedia](https://en.wikipedia.org/wiki/Chmod)
 
-
 ### Github Lifecycle (Before, Init, Command)
 
 We need to be careful when using the Init because it will not rerun if we restart an existing workspace.
 
 [Gitpod Tasks](https://www.gitpod.io/docs/configure/workspaces/tasks)
+
+
+### Working with ENV vars
+
+#### env command
+
+We cam list out all Environment Variables (ENV vars) using the `env` command.
+
+We can filter specific Environment Variables using grep, eg. `env | grep AWS_` 
+
+#### Setting and Ensetting Env Vars
+
+In the terminal we can set using `export HELLO=WORLD`
+
+In the terminal we can unset using `unset HELLO`
+
+We can set an Env var temporarily when just runnig a command.
+
+```sh
+HELLO='world' ./bin/print_message
+```
+
+Within a bash script we can set an Env var without writing export eg. 
+
+```sh
+#!/usr/bin/env bash
+
+HELLO='world'
+
+echo $HELLO
+```
+
+#### Printing Env vars
+
+We can print an Env var using echo eg. `echo $HELLO`
+
+#### Scoping of Env vars
+
+When you open up new bash terminals in VSCode it will not be aware of Env vars that you have set in another window.
+
+If you want Env vars to persist across all future bash teminals, you need to set Env vars in your bash profile, eg. `.bash_profile`
+
+#### Persisting Env Vars in Gitpod
+
+We can persist Env vars in gitpod by storing them in Gitpod Secrets Storage.
+
+```
+gp env HELLO='world'
+```
+
+All future workspaces lauched will set the Env vars for all bash terminals opened in those workspaces.
+
+You can also set Env vars in the `gitpod.yml` but this can contain only non-sensitive Env vars.
