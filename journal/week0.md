@@ -8,14 +8,14 @@
   * [Shebang Considerations](#shebang-considerations)
     + [Execution Considerations](#execution-considerations)
     + [Linux Permissions Considerations](#linux-permissions-considerations)
-  * [Github Lifecycle (Before, Init, Command)](#github-lifecycle--before--init--command-)
-  * [Working with ENV vars](#working-with-env-vars)
-    + [env command](#env-command)
-    + [Setting and Ensetting Env Vars](#setting-and-ensetting-env-vars)
-    + [Printing Env vars](#printing-env-vars)
-    + [Scoping of Env vars](#scoping-of-env-vars)
-    + [Persisting Env Vars in Gitpod](#persisting-env-vars-in-gitpod)
-  * [AWS CLI Installation](#aws-cli-installation)
+- [Gitpod Lifecycle - Before, Init, Command](#gitpod-lifecycle---before--init--command)
+- [Working with ENV vars](#working-with-env-vars)
+  * [env command](#env-command)
+  * [Setting and Ensetting Env Vars](#setting-and-ensetting-env-vars)
+  * [Printing Env vars](#printing-env-vars)
+  * [Scoping of Env vars](#scoping-of-env-vars)
+  * [Persisting Env Vars in Gitpod](#persisting-env-vars-in-gitpod)
+- [AWS CLI Installation](#aws-cli-installation)
 - [Terraform Basics](#terraform-basics)
   * [Terraform Registry](#terraform-registry)
   * [Terraform Console](#terraform-console)
@@ -74,7 +74,7 @@ UBUNTU_CODENAME=jammy
 ### Refactoring into Bash Scripts
 While fixing the Terraform CLI gpg deprecation issues we noticed the bash script steps were a considerable amount more code. So we decided to create a bash script to install the Terraform CLI.
 
-- This will keep the Gitpod Task File ([].gitpod.yml](.gitpod.yml)) tidy.  
+- This will keep the Task File ([].gitpod.yml](.gitpod.yml)) tidy.  
 - This will allow us an easier to debug and execute manually Terraform CLI install
 - This will allow better portability for other projects that need to install Terraform CLI.
 
@@ -115,22 +115,22 @@ chmod 744 ./bin/install_terraform_cli
 
 [chmod wikipedia](https://en.wikipedia.org/wiki/Chmod)
 
-### Github Lifecycle (Before, Init, Command)
+## Gitpod Lifecycle - Before, Init, Command
 
 We need to be careful when using the Init because it will not rerun if we restart an existing workspace.
 
 [Gitpod Tasks](https://www.gitpod.io/docs/configure/workspaces/tasks)
 
 
-### Working with ENV vars
+## Working with ENV vars
 
-#### env command
+### env command
 
 We cam list out all Environment Variables (ENV vars) using the `env` command.
 
 We can filter specific Environment Variables using grep, eg. `env | grep AWS_` 
 
-#### Setting and Ensetting Env Vars
+### Setting and Ensetting Env Vars
 
 In the terminal we can set using `export HELLO=WORLD`
 
@@ -152,17 +152,17 @@ HELLO='world'
 echo $HELLO
 ```
 
-#### Printing Env vars
+### Printing Env vars
 
 We can print an Env var using echo eg. `echo $HELLO`
 
-#### Scoping of Env vars
+### Scoping of Env vars
 
 When you open up new bash terminals in VSCode it will not be aware of Env vars that you have set in another window.
 
 If you want Env vars to persist across all future bash teminals, you need to set Env vars in your bash profile, eg. `.bash_profile`
 
-#### Persisting Env Vars in Gitpod
+### Persisting Env Vars in Gitpod
 
 We can persist Env vars in gitpod by storing them in Gitpod Secrets Storage.
 
@@ -174,7 +174,7 @@ All future workspaces lauched will set the Env vars for all bash terminals opene
 
 You can also set Env vars in the `gitpod.yml` but this can contain only non-sensitive Env vars.
 
-### AWS CLI Installation
+## AWS CLI Installation
 
 AWS CLI is installed for this project via the bash script [`./bin/install_aws_cli`](./bin/install_aws_cli)
 
