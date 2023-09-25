@@ -35,8 +35,21 @@ We can set Terraform Cloud variables to be sensitive, so they are not shown visi
 We can use the `-var` flag to set an input variable or override a variable in the tfvars file, eg. `terraform -var user_id="my-user_id"`
 
 ### var-file flag
+To set a larger number of variables, it is more convenient to specify their values in a variable definitions file (filename ending in either `.tfvars` or `.tfvars.json`), eg. `terraform apply -var-file="testing.tfvars"`.
 
-- TODO: document this flag 
+A variable definitions file consists only of variable name assignments:
+
+```
+image_id = "ami-abc123"
+availability_zone_names = [
+  "us-east-1a",
+  "us-west-1c",
+]
+
+```
+
+[Terraform Variable Definitions (.tfvars) Files](https://developer.hashicorp.com/terraform/language/values/variables#variable-definitions-tfvars-files)
+
 
 ### terraform.tfvars
 
@@ -44,8 +57,48 @@ This is the default file to load in terraform variables in bulk.
 
 ### auto.tfvars 
 
-- TODO: document this functionality for terraform cloud
+Terraform automatically loads a number of variable definitions files if they are present:
 
-### order of terraform variables
+Files named exactly `terraform.tfvars` or `terraform.tfvars.json`. And also any files with names ending in `.auto.tfvars` or `.auto.tfvars.json`.
 
-- TODO: document which terraform variables takes precedence 
+### Order of Terraform variables
+
+Mechanisms for setting variables can be used together in any combination. If the same variable is assigned multiple values, Terraform uses the **last** value it finds, overriding any previous values.
+
+Terraform loads variables in the following order, if present:
+
+```
+- The -var and -var-file options on the command line, in the order they are provided.
+
+- *.auto.tfvars or *.auto.tfvars.json files, processed in lexical order of their filenames.
+
+- terraform.tfvars.json file
+
+- terraform.tfvars file
+
+- Environment variables
+```
+
+[Terraform Variable Precedence](https://developer.hashicorp.com/terraform/language/values/variables#variable-definition-precedence)
+
+
+## Dealing With Configuratin Drift
+
+## What happens is we lose our state file?
+
+If you lose your statefile, you most likely have to tear down all your cloud infrastructure manually.
+
+You can use Terrafrom import, but it won't work for all cloud resources. You need to check the Terraform providers documentation for which resources support import.
+
+### Fix Missing Resources with Terraform Import
+
+`terraform import aws_s3_bucket.bucket bucket-name`
+
+[Terraform Import](https://developer.hashicorp.com/terraform/cli/import)
+[AWS S3 Bucket Import](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/s3_bucket#import)
+
+### Fix Manual Configuration
+
+If someone deletes or modifies cloud resources manually through clickops, we run `terraform plan` to attempt to rectify our infrastructre, fixing configuration drift.
+
+
