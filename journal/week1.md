@@ -148,3 +148,69 @@ module "terrahouse_aws" {
 [Modules Sources](https://developer.hashicorp.com/terraform/language/modules/sources)
 
 
+## Consdirations when using ChatGPT to write Terraform
+
+LLMs, such as ChatGPT may not be trained non the latest documentation or information about Terraform.
+It may likely produce older examples that could be deprecated, often affecting providers.
+
+
+## Setting S3 static website hosting options
+
+After setting module configuration for S3 static website hosting, terraform plan command would thro an error: 
+
+gitpod /workspace/terraform-beginner-bootcamp-2023 (27-s3-static-website-hosting) $ tf plan
+
+│ Error: creating Amazon S3 (Simple Storage) Bucket (ubvpz8q6vyj9w1rxsidtrdluflsr639r): BucketAlreadyOwnedByYou: Your previous request to create the named bucket succeeded and you already own it.
+│       status code: 409, request id: 3NF9Z2ZYW58AMHJQ, host id: Ml2a9Srit5N6gApo7HG4oajtkuGQD9IhTpf8yfc7WK9cw08aoNyYGBZvDICPqtRAFHiSWFzOEWY=
+│ 
+│   with module.terrahouse_aws.aws_s3_bucket.website_bucket,
+│   on modules/terrahouse_aws/main.tf line 21, in resource "aws_s3_bucket" "website_bucket":
+│   21: resource "aws_s3_bucket" "website_bucket" {
+
+This was resolved by manually deleting S3 bucket and rerunning tf plan command.
+
+## Working with Files in Terraform
+
+### Fileexsists function
+
+This is a build in Terraform function to check the existance of a file.
+
+```tf
+    condition     = fileexists(var.index_html_filepath)
+```
+
+[Terraform fileexists Function](https://developer.hashicorp.com/terraform/language/functions/fileexists)
+
+## Filemd5
+
+[Terraform filemd5 Function](https://developer.hashicorp.com/terraform/language/functions/filemd5)
+
+### Path Variable
+
+In Terraform there is a special variable called `path` that allows us to reference local paths:
+
+- path.module = get the path for the current module
+- path.root = get the path for the root module
+
+[Special Path Variable](https://developer.hashicorp.com/terraform/language/expressions/references#filesystem-and-workspace-info)
+
+
+```
+# Upload the index.html file to the S3 bucket
+resource "aws_s3_object" "index_html" {
+  bucket = aws_s3_bucket.website_bucket.bucket
+  key    = "index.html"
+  source = "${path.root}/public/index.html"
+  etag = filemd5(var.index_html_filepath)
+}
+```
+
+
+### Etags 
+
+Etags help to detect file changes in the data, eg. if the contents of our index.html has changed  
+
+[Etags](https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/ETag)
+
+
+
