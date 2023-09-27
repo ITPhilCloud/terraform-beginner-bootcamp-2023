@@ -17,8 +17,8 @@ PROJECT_ROOT
 
 [Terraform Standard Module Structure](https://developer.hashicorp.com/terraform/language/modules/develop/structure)
 
-## Terrafrom and Input Variables
-### Terrafrom Cloud Variables
+## Terraform and Input Variables
+### Terraform Cloud Variables
 
 In Terraform we can set two kinds of variables:
 - Environment Variables - those you would set in your bash terminal, eg. AWS credentials
@@ -100,5 +100,51 @@ You can use Terrafrom import, but it won't work for all cloud resources. You nee
 ### Fix Manual Configuration
 
 If someone deletes or modifies cloud resources manually through clickops, we run `terraform plan` to attempt to rectify our infrastructre, fixing configuration drift.
+
+## Fix using Terraform Refresh
+
+```sh
+terraform apply -refresh-only -auto-approve
+```
+`Warning: This command is deprecated`
+
+
+## Terraform Modules
+
+### Terraform Module Structure
+
+It is recommended to place modules in a `modules` directory when locally developing modules, but you can name it whatever you like. 
+
+### Passing Input Variables
+
+We can pass input variables to our module. 
+
+The module has to declare the terraform variables in its own variables.tf
+
+```tf
+module "terrahouse_aws" {
+  source ="./modules/terrahouse_aws"
+  user_uuid = var.user_uuid
+  bucket_name = var.bucket_name
+}
+```
+
+
+### Module Sources 
+
+Using the source we can import the module from various places, eg.:
+
+- locally
+- Gtihub
+- Terraform Registry
+
+
+```tf
+module "terrahouse_aws" {
+  source ="./modules/terrahouse_aws"
+}
+```
+
+[Modules Sources](https://developer.hashicorp.com/terraform/language/modules/sources)
 
 
