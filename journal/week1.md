@@ -296,3 +296,84 @@ resource "terraform_data" "content_version" {
 ```
 
 [The terraform_data Managed Resource Type](https://developer.hashicorp.com/terraform/language/resources/terraform-data)
+
+## Provisioners
+
+Provisioners allow you to execute commands on compute instances, eg. AWS CLI command.
+
+They are not recommended for use by Hashicorp because configuration management tools such as Ansible are a better fit, but the functionality exists.  
+
+[Terraform Provisioners](https://developer.hashicorp.com/terraform/language/resources/provisioners/syntax)
+
+### Local-exec
+
+This will execute a command on the machine running the Terraform commands, eg. init, plan, apply
+
+```tf
+resource "aws_instance" "web" {
+  # ...
+
+  provisioner "local-exec" {
+    command = "echo The server's IP address is ${self.private_ip}"
+  }
+}
+```
+
+[local-exec Provisioner](https://developer.hashicorp.com/terraform/language/resources/provisioners/local-exec)
+
+
+```sh
+gitpod /workspace/terraform-beginner-bootcamp-2023 (33-invalidate-cloudfront-distribution) $ tf apply --auto-approve
+```
+
+gives error:
+
+module.terrahouse_aws.terraform_data.invalidate_cache (local-exec): /bin/sh: 2: --distribution-id: not found
+╷
+│ Error: local-exec provisioner error
+│ 
+│   with module.terrahouse_aws.terraform_data.invalidate_cache,
+│   on modules/terrahouse_aws/resource-cdn.tf line 124, in resource "terraform_data" "invalidate_cache":
+│  124:   provisioner "local-exec" {
+│ 
+│ Error running command 'aws cloudfront create-invalidation \ 
+│ --distribution-id E3JF6HRBJO695L \
+│ --paths '/*'
+│ ': exit status 127. Output: Warning: Input is not a terminal (fd=0).
+│ 
+│ 
+│ /bin/sh: 2: --distribution-id: not found
+│ 
+╵
+A simple rerun resolved the issue.
+
+
+### Remote-exec
+
+This will execute a command on a machine which you target. You will need to provide credentials such as ssh to get into the machine.
+
+```tf
+resource "aws_instance" "web" {
+  # ...
+
+  # Establishes connection to be used by all
+  # generic remote provisioners (i.e. file/remote-exec)
+  connection {
+    type     = "ssh"
+    user     = "root"
+    password = var.root_password
+    host     = self.public_ip
+  }
+
+  provisioner "remote-exec" {
+    inline = [
+      "puppet apply",
+      "consul join ${aws_instance.web.private_ip}",
+    ]
+  }
+}
+
+```
+
+[remote-exec Provisioner](https://developer.hashicorp.com/terraform/language/resources/provisioners/remote-exec)
+
