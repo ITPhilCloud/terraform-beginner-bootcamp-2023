@@ -24,8 +24,8 @@ func main() {
 func Provider() *schema.Provider {
 	var p *schema.Provider
 	p = &schema.Provider{
-		ResourcesMaps: map[string]*schema.Resource{
-			"terratowns_home": Resource(),
+		ResourcesMap: map[string]*schema.Resource{
+		//	"terratowns_home": Resource(),
 		},
 
 		DataSourcesMap: map[string]*schema.Resource{
@@ -47,7 +47,7 @@ func Provider() *schema.Provider {
 				Type: schema.TypeString,
 				Required: true,
 				Description: "UUID for configuration",
-				ValidateFunc: validateUUID,
+				//ValidateFunc: validateUUID,
 			},
 		},
 	}
