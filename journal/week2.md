@@ -48,9 +48,9 @@ bundle exec ruby server.rb
 
 All of the for our server is stored in the `server.rb` file.
 
-### Terraform Debugging
+## Terraform Debugging
 
-#### Log Levels
+### Log Levels
 
 You can set elevated log level with the command `TF_LOG=DEBUG tf init`
 
@@ -72,3 +72,25 @@ You can set elevated log level with the command `TF_LOG=DEBUG tf init`
 ```
 
 [Debugging Terraform](https://developer.hashicorp.com/terraform/internals/debugging)
+
+## Terraform Providers 
+
+Providers allow Terraform to interact with cloud providers and APIs.
+
+[Provider Configuration](https://developer.hashicorp.com/terraform/language/providers/configuration)
+
+
+## Terraform Resources
+
+Resources are the most important element in the Terraform language. Each resource block describes one or more infrastructure objects, such as virtual networks, compute instances, or higher-level components such as DNS records.
+
+[Resources](https://developer.hashicorp.com/terraform/language/resources)
+
+## CRUD
+
+Terraform Provider resources utilize CRUD.
+
+CRUD stands for Create, Read Update, and Delete
+
+[Create, read, update and delete](https://en.wikipedia.org/wiki/Create,_read,_update_and_delete)
+
