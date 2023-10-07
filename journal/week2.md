@@ -48,15 +48,9 @@ bundle exec ruby server.rb
 
 All of the for our server is stored in the `server.rb` file.
 
-<<<<<<< HEAD
-### Terraform Debugging
-
-#### Log Levels
-=======
 ## Terraform Debugging
 
 ### Log Levels
->>>>>>> origin/42-terratowns-provider
 
 You can set elevated log level with the command `TF_LOG=DEBUG tf init`
 
