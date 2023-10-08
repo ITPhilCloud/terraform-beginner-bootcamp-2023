@@ -25,13 +25,13 @@ terraform {
 #    }
 #  }
 #
-#  cloud {
-#    organization = "Terraform-Beginner-Bootcamp-ITPhil"
-#
-#    workspaces {
-#      name = "terra-house-ITPhil"
-#    }
-#  }
+  cloud {
+    organization = "Terraform-Beginner-Bootcamp-ITPhil"
+
+    workspaces {
+      name = "terra-house-ITPhil"
+    }
+  }
   
 
 }
@@ -42,23 +42,47 @@ provider "terratowns" {
   token = var.terratowns_access_token
 }
 
-module "terrahouse_aws" {
-  source ="./modules/terrahouse_aws"
+module "home_rockhard_hosting" {
+  source ="./modules/terrahome_aws"
   user_uuid = var.teacherseat_user_uuid
   bucket_name = var.bucket_name
-  error_html_filepath = var.error_html_filepath
-  index_html_filepath = var.index_html_filepath
-  content_version = var.content_version
-  assets_path = var.assets_path
+  public_path = var.rockhard.public_path
+  content_version = var.rockhard.content_version
+  // error_html_filepath = var.error_html_filepath
+  // index_html_filepath = var.index_html_filepath
+  // assets_path = var.assets_path  
+  
 }
 
-resource "terratowns_home" "home" {
+resource "terratowns_home" "home_rockhard" {
   name = "Rock Hard!"
   description = <<DESCRIPTION
 For all rock fans around the world. Keep on rocking!
 DESCRIPTION
-  domain_name = module.terrahouse_aws.cloudfront_url
+  domain_name = module.home_rockhard_hosting.domain_name
   //domain_name = "3fdq3gz.cloudfront.net"
   town = "missingo"
-  content_version = 1
+  content_version = var.rockhard.content_version
+}
+
+module "home_healthfood_hosting" {
+  source ="./modules/terrahome_aws"
+  user_uuid = var.teacherseat_user_uuid
+  bucket_name = var.bucket_name
+  public_path = var.healthfood.public_path
+  content_version = var.healthfood.content_version
+  // error_html_filepath = var.error_html_filepath
+  // index_html_filepath = var.index_html_filepath  
+  // assets_path = var.assets_path
+}
+
+resource "terratowns_home" "home_healthfood" {
+  name = "Healthy Eat!"
+  description = <<DESCRIPTION
+Good delicious food, and it's healthy too!
+DESCRIPTION
+  domain_name = module.home_healthfood_hosting.domain_name
+  //domain_name = "3fdq3gz.cloudfront.net"
+  town = "missingo"
+  content_version = var.healthfood.content_version
 }
