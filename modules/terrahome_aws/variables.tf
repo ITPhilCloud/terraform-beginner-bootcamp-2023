@@ -17,17 +17,18 @@ variable "bucket_name" {
   }
 }
 
-variable "index_html_filepath" {
-  description = "Path to the index.html file"
+//variable "index_html_filepath" {
+  variable "public_path" {
+  description = "The file path for the public directory"
   type        = string
 
-  validation {
-    condition     = fileexists(var.index_html_filepath)
-    error_message = "The specified index_html_filepath is not a valid file path."
-  }
+//  validation {
+//    condition     = fileexists(var.index_html_filepath)
+//    error_message = "The specified index_html_filepath is not a valid file path."
+//  }
 }
 
-variable "error_html_filepath" {
+/*variable "error_html_filepath" {
   description = "Path to the error.html file"
   type        = string
 
@@ -35,7 +36,7 @@ variable "error_html_filepath" {
     condition     = fileexists(var.error_html_filepath)
     error_message = "The specified error_html_filepath is not a valid file path."
   }
-}
+}*/
 
 variable "content_version" {
   description = "The content version (positive integer starting at 1)"
@@ -50,7 +51,7 @@ variable "content_version" {
 }
 
 
-variable "assets_path" {
+/*variable "assets_path" {
   description = "Path to assets folder"
   type = string
-}
+}*/
