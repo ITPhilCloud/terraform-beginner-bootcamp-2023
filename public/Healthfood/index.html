@@ -3,10 +3,82 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Healthy Food!</title>
+    <title>Healthy Food</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f0f0f0;
+        }
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        h1 {
+            text-align: center;
+        }
+        .dish {
+            display: flex;
+            margin-bottom: 20px;
+        }
+        .dish img {
+            max-width: 50%;
+            margin-right: 20px;
+        }
+        .recipe {
+            flex: 1;
+        }
+    </style>
 </head>
 <body>
-    <h1>Healthy Food!</h1>
-    <img src="/assets/pancake.jpg" />
+    <div class="container">
+        <h1>Healthy Food</h1>
+        
+        <div class="dish">
+            <img src="/assets/Tunaburger3.jpg" alt="Tuna Burger">
+            <div class="recipe">
+                <h2>Tuna Burgers</h2>
+                <p>A very easy to make and healthy meal you can prepare in just a few minutes.</p>
+                <h3>Ingredients:</h3>
+                <ul>
+                    <li>one egg</li>
+                    <li>one 195g tin of tuna in sunflower oil</li>
+                    <li>35g fine oatflakes</li>
+                    <li>half teaspoon oregano</li>                    
+                    <li>optional: quarter finely chopped onion</li>
+                    <li>optional: tablespoon sesame seeds</li>
+                </ul>
+                <h3>Instructions:</h3>
+                <ol>
+                    <li>Mix all ingredients in a large bowl until sticky mass. Divide into equal parts.</li>
+                    <li>Heat oil in a pan.</li>
+                    <li>Shape burgers and fry until golden brown each side.</li>
+                </ol>
+            </div>
+        </div>
+        
+        <div class="dish">
+            <img src="/assets/Shake2.jpg" alt="Protein shake">
+            <div class="recipe">
+                <h2>Protein shake</h2>
+                <p>This energy shake is big on protein.</p>
+                <h3>Ingredients:</h3>
+                <ul>
+                    <li>250g raspberries, blueberries, strawberries, or pineapple pieces</li>
+                    <li>half a banana</li>
+                    <li>500ml non sweet and cooled Soja Drink</li>
+                    <li>3 tablespoons fine oat flakes</li>
+                    <li>40g peeled hemp or flax seed</li>
+                    <li>A tablespoon milled almonds (alternatively almond butter)</li>
+                </ul>
+                <h3>Instructions:</h3>
+                <ol>
+                    <li>Blend all and serve in glasses. Best served chilled.</li>
+                </ol>
+            </div>
+        </div>
+    </div>
 </body>
 </html>

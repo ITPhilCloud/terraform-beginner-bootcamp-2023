@@ -77,7 +77,7 @@ module "home_healthfood_hosting" {
 }
 
 resource "terratowns_home" "home_healthfood" {
-  name = "Healthy Eat!"
+  name = "Healthy Food!"
   description = <<DESCRIPTION
 Good delicious food, and it's healthy too!
 DESCRIPTION

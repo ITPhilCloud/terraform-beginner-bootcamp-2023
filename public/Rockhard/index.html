@@ -4,10 +4,67 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Rock Hard!</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            background-color: #0f0f0f;
+        }
+        .container {
+            position: relative;
+            width: 100%;
+            height: 100vh; /* 100% of the viewport height to span the page */
+        }
+        .image {
+            position: absolute;
+            max-width: 35%; /* Set the maximum width of the image to 25% of the container width */
+            height: auto;
+        }
+        .top-left {
+            top: 0;
+            left: 0;
+        }
+        .top-right {
+            top: 0;
+            right: 0;
+        }
+        .center-left {
+            position: absolute;
+            top: 50%;
+            left: 0;
+            transform: translateY(-50%);
+        }
+        .center-right {
+            position: absolute;
+            top: 50%;
+            right: 0;
+            transform: translateY(-50%);
+        }
+        .bottom-left {
+            bottom: 0;
+            left: 0;
+        }
+        .bottom-right {
+            bottom: 0;
+            right: 0;
+        }
+        .center {
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%); /* Center the image both horizontally and vertically */
+            z-index: -1; /* Center Image to the back */
+        }
+    </style>
 </head>
 <body>
-    <h1>Rock Hard!</h1>
-    <img src="/assets/ADTR.jpg" />
-    <img src="/assets/dropkick-murphys.jpg" />
+    <div class="container">
+        <img src="/assets/ADTR2.jpg" alt="A Day To Rememeber" class="image top-left">
+        <img src="/assets/Foofighters2.jpg" alt="Foo Fighters" class="image top-right">
+        <img src="/assets/dropkick-murphys.jpg" alt="Dropkick Murphys" class="image center-left">
+        <img src="/assets/Destillers.jpg" alt="Destillers" class="image center-right">
+        <img src="/assets/Bad_Religion35.jpg" alt="Bad Religion" class="image bottom-left">
+        <img src="/assets/SOAD.jpg" alt="System of a Down" class="image bottom-right">
+        <img src="/assets/Mosh2.jpg" alt="Mosh" class="image center">
+    </div>
 </body>
 </html>
