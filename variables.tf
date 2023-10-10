@@ -25,9 +25,9 @@ variable "healthfood" {
   })
 }
 
-variable "bucket_name" {
+/*variable "bucket_name" {
    type        = string
-}
+}*/
 
 
 /*variable "index_html_filepath" {

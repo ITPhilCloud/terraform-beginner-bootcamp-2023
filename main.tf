@@ -45,7 +45,7 @@ provider "terratowns" {
 module "home_rockhard_hosting" {
   source ="./modules/terrahome_aws"
   user_uuid = var.teacherseat_user_uuid
-  bucket_name = var.bucket_name
+  // bucket_name = var.bucket_name
   public_path = var.rockhard.public_path
   content_version = var.rockhard.content_version
   // error_html_filepath = var.error_html_filepath
@@ -61,14 +61,14 @@ For all rock fans around the world. Keep on rocking!
 DESCRIPTION
   domain_name = module.home_rockhard_hosting.domain_name
   //domain_name = "3fdq3gz.cloudfront.net"
-  town = "missingo"
+  town = "melomaniac-mansion"
   content_version = var.rockhard.content_version
 }
 
 module "home_healthfood_hosting" {
   source ="./modules/terrahome_aws"
   user_uuid = var.teacherseat_user_uuid
-  bucket_name = var.bucket_name
+  // bucket_name = var.bucket_name
   public_path = var.healthfood.public_path
   content_version = var.healthfood.content_version
   // error_html_filepath = var.error_html_filepath
@@ -83,6 +83,6 @@ Good delicious food, and it's healthy too!
 DESCRIPTION
   domain_name = module.home_healthfood_hosting.domain_name
   //domain_name = "3fdq3gz.cloudfront.net"
-  town = "missingo"
+  town = "cooker-cove"
   content_version = var.healthfood.content_version
 }
