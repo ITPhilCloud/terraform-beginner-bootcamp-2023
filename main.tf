@@ -42,7 +42,7 @@ provider "terratowns" {
   token = var.terratowns_access_token
 }
 
-module "home_rockhard_hosting" {
+/*module "home_rockhard_hosting" {
   source ="./modules/terrahome_aws"
   user_uuid = var.teacherseat_user_uuid
   // bucket_name = var.bucket_name
@@ -63,7 +63,7 @@ DESCRIPTION
   //domain_name = "3fdq3gz.cloudfront.net"
   town = "melomaniac-mansion"
   content_version = var.rockhard.content_version
-}
+}*/
 
 module "home_healthfood_hosting" {
   source ="./modules/terrahome_aws"
